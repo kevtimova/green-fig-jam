@@ -11,19 +11,50 @@
     };
   </script>
   <style>
-    /* Removed .theme-toggle styles as theme toggle is no longer present */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      min-width: 12rem;
+      background-color: #1f2937;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      z-index: 50;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: white;
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background-color: #374151;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white transition-colors duration-300">
   <header class="bg-gray-900 text-white sticky top-0 z-50 shadow">
     <nav class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
       <div class="text-lg font-semibold">Green Fig Jam</div>
-      <ul class="flex space-x-4 text-sm">
-        <li><a href="#description" class="hover:underline">About</a></li>
-        <li><a href="#origins" class="hover:underline">Origins</a></li>
-        <li><a href="#recipes" class="hover:underline">Recipes</a></li>
-        <li><a href="#buy" class="hover:underline">Buy</a></li>
-        <li><a href="#support" class="hover:underline">Support</a></li>
+      <ul class="flex space-x-4 text-sm items-center">
+        <li><a href="#support" class="hover:underline">Offers</a></li>
+        <li class="dropdown">
+          <button class="hover:underline flex items-center gap-1" onclick="toggleDropdown(event)" type="button">
+            Green Fig Jam
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="dropdown-menu" style="display: none;">
+            <a href="#greenfig" onclick="showTabAndClose('about')">About</a>
+            <a href="#greenfig" onclick="showTabAndClose('recipes')">Recipes</a>
+            <a href="#greenfig" onclick="showTabAndClose('buy')">Where to Buy</a>
+          </div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -31,74 +62,172 @@
 
   <!-- Hero Section -->
   <section class="relative h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('images/naoki-suzuki-RV7OODcMsPY-unsplash.jpg');">
-    <div class="bg-black bg-opacity-50 p-6 rounded-xl">
-      <h1 class="text-4xl md:text-6xl font-bold text-white text-center">Green Fig Jam</h1>
-      <p class="mt-4 text-xl text-white text-center">A delicacy made from green (unripe) figs popular in the Mediterranean and beyond.</p>
-    </div>
-  </section>
-
-  <!-- Description Section -->
-  <section id="description" class="max-w-4xl mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold mb-4 text-center">What is Green Fig Jam?</h2>
-    <p class="text-lg leading-relaxed text-center">
-      Green (unripe) figs jam is a traditional preserve found throughout the Balkans. Made from small, unripe figs, it’s delicately aromatic, not overly sweet, and is usually served alongside coffee or yogurt. Bulgaria and Greece are known for crafting some of the finest versions of this delicacy.
-    </p>
-  </section>
-
-  <section id="origins" class="max-w-4xl mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold mb-4 text-center">Origins</h2>
-    <p class="text-lg leading-relaxed text-center">
-      Unripe fig jam, also known as green fig preserves or spoon sweets, is a traditional sweet treat with deep roots in the Mediterranean and Middle Eastern regions. The practice of making jams and preserves from figs has a long history in these areas, dating back to ancient civilizations like the Greeks and Romans who cultivated figs and used them in various dishes, including early forms of sweet pastes and preserves. 
-      Specifically concerning unripe figs, these cultures recognized the value of using figs that didn't fully ripen, preventing them from going to waste. In areas where the climate might not be consistently warm enough for all figs to reach full ripeness, or as a way to utilize an abundant harvest, preserving unripe figs in a sugar syrup became a common practice. 
-      You'll find variations of this in Bulgarian, Greek, Turkish, Lebanese, and South African cuisines, where unripe figs are simmered until tender and preserved in syrup, often flavored with lemon peel, cloves, or ginger.  
-      The preservation of green figs is particularly popular in the Western Cape region of South Africa, where the culinary tradition utilizes unripe figs to create a unique preserve often served with cheese boards or desserts. 
-      In essence, unripe fig jam represents a clever and delicious way that various cultures have historically made the most of their fig harvest, resulting in a cherished culinary tradition enjoyed across different regions.
-    </p>
-  </section>
-
-  <!-- Recipes Section -->
-  <section id="recipes" class="bg-gray-800 dark:bg-white py-12 px-4 transition-colors duration-300">
-    <div class="max-w-4xl mx-auto text-white dark:text-gray-800 text-center">
-      <h2 class="text-3xl font-bold mb-6">Recipes</h2>
-      <ul class="list-inside text-lg space-y-2">
-        <li><a href="https://archive.nytimes.com/tmagazine.blogs.nytimes.com/2011/10/06/ravenous-preserved-unripe-figs/" class="underline" target="_blank">Ravenous | Preserved Unripe Figs</a></li>
-        <li><a href="https://www.giverecipe.com/unripe-fig-jam/" class="underline" target="_blank">Give Recipe | Unripe Fig Jam</a></li>
-        <li><a href="https://purebolandmarket.co.za/how-to-preserve-your-own-green-figs/" class="underline" target="_blank">How to preserve your own green figs</a></li>
-        <li><a href="https://www.diaryofacountrygirl.com/2020/10/30/the-joy-of-preserving-and-a-recipe-for-preserved-green-figs/" class="underline" target="_blank">The joy of preserving (and a recipe for preserved green figs)…</a></li>
-        <li><a href="https://www.tantalisemytastebuds.com/green-figs-in-syrup-vye-konfyt/" class="underline" target="_blank">Cape Malay Preserved Green Figs in syrup (Vye Konfyt)</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Buy Section -->
-  <section id="buy" class="bg-gray-700 dark:bg-green-100 py-12 px-4 transition-colors duration-300">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6 text-white dark:text-gray-800">Where to Buy</h2>
-      <ul class="list-inside text-lg space-y-2">
-        <li><a href="https://picklesandolives.com/products/green-fig-jam?variant=49921956348187" target="_blank" class="underline">Shop on Pickles and Olives</a></li>
-        <li><a href="https://www.etsy.com/search?q=green+fig+jam" target="_blank" class="underline">Shop on Etsy</a></li>
-        <li><a href="https://malincho.com/tamek-fig-jam-380g.html" target="_blank" class="underline">Shop on Malincho</a></li>
-      </ul>
+    <div class="bg-black bg-opacity-50 p-8 rounded-xl max-w-3xl">
+      <h1 class="text-4xl md:text-6xl font-bold text-white text-center mb-6">Curated Offers & Discounts</h1>
+      <p class="mt-4 text-xl text-white text-center">Save on wellness, home essentials, and more with our curated referral links</p>
+      <div class="mt-8 text-center">
+        <a href="#support" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition">View All Offers</a>
+      </div>
     </div>
   </section>
 
   <!-- Support Section -->
-  <section id="support" class="py-12 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Support This Page</h2>
-      <p class="mb-4 text-lg">If you enjoy this content and would like to support its growth, please consider using our referral links:</p>
-      <ul class="space-y-2 text-lg">
-        <li><a href="https://share.ritual.com/x/iq4wXF" class="underline" target="_blank">Ritual: $15 off first purchase</a></li>
-        <li><a href="http://rwrd.io/nv6cntl?c" class="underline" target="_blank">Branch Basics: $10 off first purchase</a></li>
-        <li><a href="https://refer.seed.com/by/kati.evtimova@gmail.com" class="underline" target="_blank">Seed: $25 off when you subscribe</a></li>
-        <li><a href="https://serenity-kids.myshopify.com/discount/SMARTRR-REFERRAL0000234272971606426780" class="underline" target="_blank">Serenity Kids: $15 off first purchase</a></li>
-        <li><a href="https://piccalio.com/?tkr=Piccaliorr7ft&utm_source=toki&utm_medium=referral&utm_campaign=Piccaliorr7ft" class="underline" target="_blank">Piccalio: 10% off your first order</a></li>
-        <li><a href="https://go.refrl.co/r/19RJsGyEiU1O" class="underline" target="_blank">Sprout: $15 off your first order over $100</a></li>
-        <li><a href="https://m.do.co/c/466e1cbf47ec" class="underline" target="_blank">Digital Ocean: $200 credit</a></li>
-        <li><a href="https://revolut.com/referral/?referral-code=katrin0xwt!JUL1-25-AR-US-H2-REFBLOCK&geo-redirect" class="underline" target="_blank">Revolut: join 60 million users</a></li>
+  <section id="support" class="py-12 px-4 bg-gradient-to-br from-green-900 to-gray-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center whitespace-nowrap">Curated Offers & Discounts</h2>
+      <p class="mb-8 text-xl text-center">Take advantage of these special deals on products and services we love</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="https://share.ritual.com/x/iq4wXF" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Ritual</h3>
+          <p class="text-green-400 font-semibold mb-2">$15 off first purchase</p>
+          <p class="text-sm">Essential vitamins and supplements</p>
+        </a>
+        <a href="http://rwrd.io/nv6cntl?c" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Branch Basics</h3>
+          <p class="text-green-400 font-semibold mb-2">$10 off first purchase</p>
+          <p class="text-sm">Non-toxic cleaning products</p>
+        </a>
+        <a href="http://rwrd.io/0uwpfo3?c" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Primally Pure</h3>
+          <p class="text-green-400 font-semibold mb-2">$10 off first purchase</p>
+          <p class="text-sm">Natural skincare products</p>
+        </a>
+        <a href="https://refer.seed.com/by/kati.evtimova@gmail.com" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Seed</h3>
+          <p class="text-green-400 font-semibold mb-2">$25 off subscription</p>
+          <p class="text-sm">Daily synbiotic for gut health</p>
+        </a>
+        <a href="https://serenity-kids.myshopify.com/discount/SMARTRR-REFERRAL0000234272971606426780" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Serenity Kids</h3>
+          <p class="text-green-400 font-semibold mb-2">$15 off first purchase</p>
+          <p class="text-sm">Nutrient-dense baby and toddler food</p>
+        </a>
+        <a href="https://piccalio.com/?tkr=Piccaliorr7ft&utm_source=toki&utm_medium=referral&utm_campaign=Piccaliorr7ft" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Piccalio</h3>
+          <p class="text-green-400 font-semibold mb-2">10% off first order</p>
+          <p class="text-sm">Premium furniture for kids</p>
+        </a>
+        <a href="https://go.refrl.co/r/19RJsGyEiU1O" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Sprout</h3>
+          <p class="text-green-400 font-semibold mb-2">$15 off orders over $100</p>
+          <p class="text-sm">Organic products for families</p>
+        </a>
+        <a href="https://m.do.co/c/466e1cbf47ec" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Digital Ocean</h3>
+          <p class="text-green-400 font-semibold mb-2">$200 credit</p>
+          <p class="text-sm">Cloud infrastructure for developers</p>
+        </a>
+        <a href="https://revolut.com/referral/?referral-code=katrin0xwt!JUL1-25-AR-US-H2-REFBLOCK&geo-redirect" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition block" target="_blank">
+          <h3 class="font-bold text-xl mb-2">Revolut</h3>
+          <p class="text-green-400 font-semibold mb-2">Join 60M+ users</p>
+          <p class="text-sm">Modern digital banking</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Green Fig Jam Section with Tabs -->
+  <section id="greenfig" class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-6 text-center">Green Fig Jam</h2>
+    
+    <!-- Tab Navigation -->
+    <div class="flex flex-wrap justify-center gap-2 mb-6 border-b border-gray-700">
+      <button onclick="showTab('about')" id="tab-about" class="tab-button px-4 py-2 font-semibold border-b-2 border-green-600 text-green-400">About</button>
+      <button onclick="showTab('recipes')" id="tab-recipes" class="tab-button px-4 py-2 font-semibold border-b-2 border-transparent hover:text-green-400">Recipes</button>
+      <button onclick="showTab('buy')" id="tab-buy" class="tab-button px-4 py-2 font-semibold border-b-2 border-transparent hover:text-green-400">Where to Buy</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="content-about" class="tab-content">
+      <p class="text-lg leading-relaxed text-center mb-6">
+        Green (unripe) figs jam is a traditional preserve found throughout the Balkans. Made from small, unripe figs, it's delicately aromatic, not overly sweet, and is usually served alongside coffee or yogurt. Bulgaria and Greece are known for crafting some of the finest versions of this delicacy.
+      </p>
+      <details class="bg-gray-800 p-6 rounded-lg">
+        <summary class="cursor-pointer font-semibold text-xl mb-2">Learn More About the Origins</summary>
+        <p class="text-base leading-relaxed mt-4">
+          Unripe fig jam, also known as green fig preserves or spoon sweets, is a traditional sweet treat with deep roots in the Mediterranean and Middle Eastern regions. The practice of making jams and preserves from figs has a long history in these areas, dating back to ancient civilizations like the Greeks and Romans who cultivated figs and used them in various dishes, including early forms of sweet pastes and preserves. 
+          Specifically concerning unripe figs, these cultures recognized the value of using figs that didn't fully ripen, preventing them from going to waste. In areas where the climate might not be consistently warm enough for all figs to reach full ripeness, or as a way to utilize an abundant harvest, preserving unripe figs in a sugar syrup became a common practice. 
+          You'll find variations of this in Bulgarian, Greek, Turkish, Lebanese, and South African cuisines, where unripe figs are simmered until tender and preserved in syrup, often flavored with lemon peel, cloves, or ginger.  
+          The preservation of green figs is particularly popular in the Western Cape region of South Africa, where the culinary tradition utilizes unripe figs to create a unique preserve often served with cheese boards or desserts. 
+          In essence, unripe fig jam represents a clever and delicious way that various cultures have historically made the most of their fig harvest, resulting in a cherished culinary tradition enjoyed across different regions.
+        </p>
+      </details>
+    </div>
+
+    <div id="content-recipes" class="tab-content hidden">
+      <ul class="space-y-3 text-lg">
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://archive.nytimes.com/tmagazine.blogs.nytimes.com/2011/10/06/ravenous-preserved-unripe-figs/" class="underline hover:text-green-400" target="_blank">Ravenous | Preserved Unripe Figs</a></li>
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://www.giverecipe.com/unripe-fig-jam/" class="underline hover:text-green-400" target="_blank">Give Recipe | Unripe Fig Jam</a></li>
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://purebolandmarket.co.za/how-to-preserve-your-own-green-figs/" class="underline hover:text-green-400" target="_blank">How to preserve your own green figs</a></li>
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://www.diaryofacountrygirl.com/2020/10/30/the-joy-of-preserving-and-a-recipe-for-preserved-green-figs/" class="underline hover:text-green-400" target="_blank">The joy of preserving (and a recipe for preserved green figs)…</a></li>
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://www.tantalisemytastebuds.com/green-figs-in-syrup-vye-konfyt/" class="underline hover:text-green-400" target="_blank">Cape Malay Preserved Green Figs in syrup (Vye Konfyt)</a></li>
+      </ul>
+    </div>
+
+    <div id="content-buy" class="tab-content hidden">
+      <ul class="space-y-3 text-lg">
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://picklesandolives.com/products/green-fig-jam?variant=49921956348187" target="_blank" class="underline hover:text-green-400">Shop on Pickles and Olives</a></li>
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://www.etsy.com/search?q=green+fig+jam" target="_blank" class="underline hover:text-green-400">Shop on Etsy</a></li>
+        <li class="bg-gray-800 p-4 rounded-lg"><a href="https://malincho.com/tamek-fig-jam-380g.html" target="_blank" class="underline hover:text-green-400">Shop on Malincho</a></li>
       </ul>
     </div>
   </section>
+
+  <script>
+    function showTab(tabName) {
+      // Hide all tab contents
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      // Remove active state from all tabs
+      const tabs = document.querySelectorAll('.tab-button');
+      tabs.forEach(tab => {
+        tab.classList.remove('border-green-600', 'text-green-400');
+        tab.classList.add('border-transparent');
+      });
+
+      // Show selected tab content
+      document.getElementById('content-' + tabName).classList.remove('hidden');
+
+      // Add active state to selected tab
+      const activeTab = document.getElementById('tab-' + tabName);
+      activeTab.classList.add('border-green-600', 'text-green-400');
+      activeTab.classList.remove('border-transparent');
+    }
+
+    function toggleDropdown(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const dropdown = event.currentTarget.nextElementSibling;
+      const isHidden = dropdown.style.display === 'none';
+      
+      // Close all dropdowns first
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+      });
+      
+      // Toggle current dropdown
+      dropdown.style.display = isHidden ? 'block' : 'none';
+    }
+
+    function showTabAndClose(tabName) {
+      showTab(tabName);
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.style.display = 'none';
+        });
+      }
+    });
+  </script>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white text-center py-6">
